@@ -1,6 +1,10 @@
 import {TileStatus} from "./Row.tsx";
 
-export function Tile({char, status}) {
+type Props = {
+    char: string;
+    status: TileStatus;
+}
+export function Tile({char, status}: Props) {
     
      const tileTheme = () => {
             switch(status) {

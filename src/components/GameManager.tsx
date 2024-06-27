@@ -1,10 +1,8 @@
 import {Win} from "./Win.tsx";
 import {Lose} from "./Lose.tsx";
-import {Row, TileStatus} from "./Row.tsx";
+import {Row} from "./Row.tsx";
 import {Guess} from "./Guess.tsx";
 import {useState} from "react";
-import {j} from "vite/dist/node/types.d-aGj9QkWt";
-
 
 
 export function GameManager() {
@@ -15,7 +13,7 @@ export function GameManager() {
 
     const word = 'Seoul';
 
-    const handleGuess = (newGuess) => {
+    const handleGuess = (newGuess: string) => {
         setGuess(newGuess);
         setGuessCount(prevCount => {
             const newCount = prevCount + 1;

@@ -1,7 +1,12 @@
 import {Tile} from "./Tile.tsx";
 import {useEffect, useState} from "react";
 
-export function Row({word, guess}) {
+type Props = {
+    word: string;
+    guess: string;
+}
+
+export function Row({word, guess}: Props) {
     const [tileStatus, setTileStatus] 
         = useState<{char: string, status: TileStatus}[]>(Array(5).fill({char: '', status: TileStatus}));
 
@@ -12,7 +17,7 @@ export function Row({word, guess}) {
         if (!guess) return;
 
         // Create a frequency map of the letters in the word
-        const letterCount = word.split('').reduce((acc, letter) => {
+        const letterCount = word.split('').reduce((acc: Record<string, number>, letter: string) => {
             acc[letter] = (acc[letter] || 0) + 1;
             return acc;
         }, {});
@@ -22,10 +27,10 @@ export function Row({word, guess}) {
                 letterCount[guessLetter]--;
                 return { char: guessLetter, status: TileStatus.MATCH };
             }
-            return { char: guessLetter, status: null }; // Placeholder
+            return { char: guessLetter, status: TileStatus.NONE }; // Placeholder
         });
 
-        newTileStatus.forEach((tile, index) => {
+        newTileStatus.forEach((tile: { char: string, status: TileStatus }) => {
             if (!tile.status) {
                 if (letterCount[tile.char] > 0) {
                     letterCount[tile.char]--;
