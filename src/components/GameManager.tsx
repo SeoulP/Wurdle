@@ -80,7 +80,7 @@ export function GameManager() {
     return (
         <div className="flex items-center justify-center">
             <div className={"h-full flex rounded-lg items-center p-4 flex-col bg-slate-700 w-[30rem]"}>
-                <div className={"text-6xl text-slate-50 mt-[-1rem] "}>WURDLE</div>
+                <div className={"text-5xl text-slate-50 mt-[-1rem] "}>WURDLE</div>
                 <div className={"items-center flex flex-col"}>
                     {guesses.map((row, index) => (
                         <Row key={index} gameState={gameState} word={word.toUpperCase()} guess={row.toUpperCase()}/>

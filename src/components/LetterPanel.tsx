@@ -57,7 +57,7 @@ export function LetterPanel({currentGuess, word}: Props) {
         
         switch(letterStatus.matched) {
             case TileStatus.MATCH:
-                return "text-green-500";            
+                return "text-green-400";            
             case TileStatus.PARTIAL:
                 return "text-amber-500";            
             case TileStatus.NONE:

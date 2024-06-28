@@ -28,13 +28,13 @@ export function Tile({gameState, char, charPosition, status}: Props) {
         {
             case GameState.PLAYING:
                 return (
-                    <div className={"flex pb-1 justify-center items-end drop-shadow-md shadow-amber-700 w-14 h-14 text-slate-50 text-5xl rounded-md border-amber-500 my-2 mx-1 hover:bg-amber-200 " + tileTheme()}>
+                    <div className={"flex pb-1 justify-center items-end drop-shadow-md shadow-amber-700 w-12 h-12 text-slate-50 text-4xl rounded-md border-amber-500 my-2 mx-1 hover:bg-amber-200 " + tileTheme()}>
                         {char}
                     </div>
                 )
             case GameState.WIN:
             return (
-                <div className={"flex pb-1 justify-center items-end drop-shadow-md shadow-amber-700 w-14 h-14 text-slate-50 text-5xl rounded-md border-amber-500 my-2 mx-1 animate-bounce-custom hover:bg-amber-200 " + tileTheme()}
+                <div className={"flex pb-1 justify-center items-end drop-shadow-md shadow-amber-700 w-12 h-12 text-slate-50 text-4xl rounded-md border-amber-500 my-2 mx-1 animate-bounce-custom hover:bg-amber-200 " + tileTheme()}
                      style={{ animationDelay: (charPosition * .5) + "s" }}>
                     {char}
                 </div>
