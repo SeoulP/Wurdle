@@ -12,7 +12,7 @@ export function Guess({sendDataToParent, gameState}: Props) {
     if (gameState === GameState.PLAYING)
     return (
         <div className={"flex flex-row gap-4"}>
-                <input type="text" maxLength={5} value={pendingGuess} onKeyDown={
+                <input type="text" maxLength={5} value={pendingGuess.toUpperCase()} onKeyDown={
                     (e) => {
                         if(e.key === 'Enter') {
                             sendDataToParent(pendingGuess);

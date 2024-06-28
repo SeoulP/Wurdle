@@ -15,12 +15,13 @@ export function GameManager() {
     const [guessCount, setGuessCount] = useState(0);
 
     useEffect(() => {
+        if (gameState != GameState.PLAYING) return;
         const fetchWord = async () => {
             const response = await fetch(raw);
             const text = await response.text();
             const words: string[] = text.split("\n");
             const selectedWord = words[Math.floor(Math.random() * words.length)];
-            setWord(selectedWord);
+            setWord(selectedWord.toUpperCase());
         };
         fetchWord();
     }, [gameState]);
@@ -39,9 +40,6 @@ export function GameManager() {
         }
     }, [gameState]);
     
-    console.log(word);
-    console.log(gameState)
-
     const handleGuess = (newGuess: string) => {
         setCurrentGuess(newGuess);
         setGuessCount(prevCount => {
@@ -62,14 +60,19 @@ export function GameManager() {
                 </>
         );
         }
-        return <button ref={gamePlayButtonRef} onClick={() => {
-            setGuessCount(0);
-            setCurrentGuess('');
-            setGameState(GameState.PLAYING);
-            setGuesses(Array(6).fill(''));
-        }} className={"bg-green-500 rounded-md shadow-md mt-4 text-white cursor-pointer p-3 hover:bg-green-300"}>
-            Play Again!
-        </button>
+        return (
+            <>
+                <div className={"text-3xl text-slate-50"}>{word}</div>
+                <button ref={gamePlayButtonRef} onClick={() => {
+                setGuessCount(0);
+                setCurrentGuess('');
+                setGameState(GameState.PLAYING);
+                setGuesses(Array(6).fill(''));
+                }} 
+                        className={"bg-green-500 rounded-md shadow-md mt-4 text-white cursor-pointer p-3 hover:bg-green-300"}>
+                Play Again!
+            </button>
+            </>)
 
 
     }

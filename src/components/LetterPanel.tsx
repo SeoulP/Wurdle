@@ -13,7 +13,7 @@ type LetterStatus = {
 }
 export function LetterPanel({currentGuess, word}: Props) {
     const [letterStatuses, setLetterStatuses] = useState<LetterStatus[]>(() =>
-        "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").map((char) => ({
+        "QWERTYUIOP  ASDFGHJKL  ZXCVBNM".split("").map((char) => ({
             char,
             guessed: false,
             matched: TileStatus.NONE,
@@ -69,7 +69,7 @@ export function LetterPanel({currentGuess, word}: Props) {
     
     
     return (
-        <div className="flex flex-row gap-1 flex-wrap w-80 items-center justify-center shadow-slate-700 shadow-[inset_0_2px_4px] px-10 py-2 mt-4 rounded-md bg-slate-600">
+        <div className="flex flex-row gap-2 flex-wrap w-64 items-center justify-center shadow-slate-700 shadow-[inset_0_2px_4px] px-6 py-2 mt-4 rounded-md bg-slate-600">
             {letterStatuses!.map((letterStatus, i) => (
                 <div className={"text-xl " + letterClass(letterStatus)} key={i}>{letterStatus.char}</div>
             ))}
